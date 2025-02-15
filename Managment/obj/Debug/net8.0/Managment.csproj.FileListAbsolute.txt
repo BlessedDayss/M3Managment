@@ -1,0 +1,17 @@
+/Users/blesseddays/Documents/RiderProjects/Managment/Managment/bin/Debug/net8.0/Managment
+/Users/blesseddays/Documents/RiderProjects/Managment/Managment/bin/Debug/net8.0/Managment.deps.json
+/Users/blesseddays/Documents/RiderProjects/Managment/Managment/bin/Debug/net8.0/Managment.runtimeconfig.json
+/Users/blesseddays/Documents/RiderProjects/Managment/Managment/bin/Debug/net8.0/Managment.dll
+/Users/blesseddays/Documents/RiderProjects/Managment/Managment/bin/Debug/net8.0/Managment.pdb
+/Users/blesseddays/Documents/RiderProjects/Managment/Managment/obj/Debug/net8.0/Managment.GeneratedMSBuildEditorConfig.editorconfig
+/Users/blesseddays/Documents/RiderProjects/Managment/Managment/obj/Debug/net8.0/Managment.AssemblyInfoInputs.cache
+/Users/blesseddays/Documents/RiderProjects/Managment/Managment/obj/Debug/net8.0/Managment.AssemblyInfo.cs
+/Users/blesseddays/Documents/RiderProjects/Managment/Managment/obj/Debug/net8.0/Managment.csproj.CoreCompileInputs.cache
+/Users/blesseddays/Documents/RiderProjects/Managment/Managment/obj/Debug/net8.0/Managment.dll
+/Users/blesseddays/Documents/RiderProjects/Managment/Managment/obj/Debug/net8.0/refint/Managment.dll
+/Users/blesseddays/Documents/RiderProjects/Managment/Managment/obj/Debug/net8.0/Managment.pdb
+/Users/blesseddays/Documents/RiderProjects/Managment/Managment/obj/Debug/net8.0/Managment.genruntimeconfig.cache
+/Users/blesseddays/Documents/RiderProjects/Managment/Managment/obj/Debug/net8.0/ref/Managment.dll
+/Users/blesseddays/Documents/RiderProjects/Managment/Managment/bin/Debug/net8.0/Spectre.Console.dll
+/Users/blesseddays/Documents/RiderProjects/Managment/Managment/obj/Debug/net8.0/Managment.csproj.AssemblyReference.cache
+/Users/blesseddays/Documents/RiderProjects/Managment/Managment/obj/Debug/net8.0/Managment.csproj.Up2Date

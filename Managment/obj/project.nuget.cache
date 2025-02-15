@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "R9JbrzoHAkg=",
+  "success": true,
+  "projectFilePath": "/Users/blesseddays/Documents/RiderProjects/Managment/Managment/Managment.csproj",
+  "expectedPackageFiles": [
+    "/Users/blesseddays/.nuget/packages/spectre.console/0.49.2-preview.0.75/spectre.console.0.49.2-preview.0.75.nupkg.sha512"
+  ],
+  "logs": []
+}
