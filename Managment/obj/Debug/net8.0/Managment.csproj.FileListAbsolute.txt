@@ -15,3 +15,4 @@
 /Users/blesseddays/Documents/RiderProjects/Managment/Managment/bin/Debug/net8.0/Spectre.Console.dll
 /Users/blesseddays/Documents/RiderProjects/Managment/Managment/obj/Debug/net8.0/Managment.csproj.AssemblyReference.cache
 /Users/blesseddays/Documents/RiderProjects/Managment/Managment/obj/Debug/net8.0/Managment.csproj.Up2Date
+/Users/blesseddays/Documents/RiderProjects/Managment/Managment/obj/Debug/net8.0/Managment.sourcelink.json
