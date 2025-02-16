@@ -38,7 +38,6 @@ internal abstract class Program
                         }
                     }
                 }
-
                 else if (choice == "🎓 Show Students")
                 {
                     manager.ShowStudentsTable(studentName: "");
@@ -94,11 +93,7 @@ internal abstract class Program
                 {
                     Environment.Exit(0);
                 }
-                
             }
-
         }
     }
-
-
 }
