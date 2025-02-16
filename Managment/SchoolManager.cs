@@ -7,9 +7,9 @@ namespace Managment;
 public class SchoolManager<T> : IManageable<T> where T : Person 
 {
 
-    private List<Teacher> teachers = new List<Teacher>();
+    public List<Teacher> teachers = new List<Teacher>();
     
-    private List<Student> students = new List<Student>();
+    public List<Student> students = new List<Student>();
     
     public SchoolManager()
     {
@@ -55,12 +55,12 @@ public class SchoolManager<T> : IManageable<T> where T : Person
         }
         AnsiConsole.Write(table);
     }
-    
-    public void ShowStudentsTable()
+
+    public void ShowStudentsTable(string studentName)
     {
         var table1 = new Table();
         table1.Border = TableBorder.SimpleHeavy;
-        
+
         table1.AddColumn(new TableColumn("Name"));
         table1.AddColumn(new TableColumn("Surname"));
         table1.AddColumn(new TableColumn("Age"));
@@ -70,13 +70,36 @@ public class SchoolManager<T> : IManageable<T> where T : Person
 
         foreach (var student in students)
         {
-            table1.AddRow(student.Name, student.Surname, student.Age.ToString(), student._grade.ToString(), student._gpa.ToString(), student._teacher.GetInfoStudent());
+            table1.AddRow(student.Name, student.Surname, student.Age.ToString(), student._grade.ToString(),
+                student._gpa.ToString(), student._teacher.GetInfoStudent());
         }
+
         AnsiConsole.Write(table1);
     }
 
-    
-    
+    public void SearchStudent(string name)
+    {
+        var student = students.FirstOrDefault(s => s.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+
+        if (student != null)
+        {
+            var table = new Table()
+                .AddColumn("Name")
+                .AddColumn("Surname")
+                .AddColumn("Age")
+                .AddColumn("Grade")
+                .AddColumn("GPA");
+
+            table.AddRow(student.Name, student.Surname, student.Age.ToString(), student._grade.ToString(), student._gpa.ToString());
+            AnsiConsole.Write(table);
+        }
+        else
+        {
+            AnsiConsole.MarkupLine("[red]Student not found.[/]");
+        }
+    }
+
+
     public void Add(T item)
     {
         if (item is Student student)

@@ -41,7 +41,7 @@ internal abstract class Program
 
                 else if (choice == "🎓 Show Students")
                 {
-                    manager.ShowStudentsTable();
+                    manager.ShowStudentsTable(studentName: "");
                     while (true)
                     {
                         var choice2 = AnsiConsole.Prompt(new SelectionPrompt<string>()
@@ -52,15 +52,8 @@ internal abstract class Program
                             break;
                         }else if (choice2 == "Search")
                         {
-                            Console.WriteLine("Please type name of the Student: ");
-                            var studentName = Console.ReadLine();
-                            var studenSearch = manager.Find(studentName);
-
-                            if ( studenSearch != null)
-                            {
-                                manager.ShowStudentsTable(studenSearch);
-                            }
-                            
+                            var searchQuery = AnsiConsole.Ask<string>("Enter student name:");
+                            manager.SearchStudent(name: searchQuery);
                         }
                         else if (choice2 == "Exit")
                         {
@@ -71,18 +64,6 @@ internal abstract class Program
                 }
                 else if (choice == "🔎 Find Student")
                 {
-                    // Console.WriteLine("Enter the student name");
-                    // var studentName = Console.ReadLine();
-                    // var student = manager.Find(studentName);
-                    // if (student != null)
-                    // {
-                    //     showStudentInfo(student);
-                    // }
-                    // else
-                    // {
-                    //     Console.WriteLine("Student not found");
-                    // }
-                    // Console.ReadLine();
                 }
                 else if (choice == "➕  Add")
                 {
