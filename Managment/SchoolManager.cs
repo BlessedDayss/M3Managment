@@ -76,6 +76,8 @@ public class SchoolManager<T> : IManageable<T> where T : Person
 
         AnsiConsole.Write(table1);
     }
+    
+    
 
     public void SearchNameStudent(string name)
     {
@@ -97,7 +99,6 @@ public class SchoolManager<T> : IManageable<T> where T : Person
             AnsiConsole.MarkupLine("[red]Student not found.[/]");
         }
     }
-
     public void SearchLastNameStudent(string surname)
     {
         var student = students.FirstOrDefault(l => l.Surname.Equals(surname, StringComparison.OrdinalIgnoreCase));

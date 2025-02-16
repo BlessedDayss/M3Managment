@@ -7,18 +7,16 @@ internal abstract class Program
 {
     private static void Main()
     {
-
+        
         SchoolManager<Person> manager = new SchoolManager<Person>();
 
         while (true)
-                
         {   
             Console.Clear();
             var choice = AnsiConsole.Prompt(new SelectionPrompt<string>()
                 .Title("[blue]Welcome to M3 School Management App:[/]")
                 .AddChoices("📚 Show Teachers", "🎓 Show Students", "🔎 Find Student", "➕  Add", "➖  Delete",
                     "❌  Exit"));
-            
             {
                 Console.Clear();
                 if (choice == "📚 Show Teachers")
@@ -38,7 +36,6 @@ internal abstract class Program
                         }
                     }
                 }
-
                 else if (choice == "🎓 Show Students")
                 {
                     manager.ShowStudentsTable(studentName: "");
@@ -84,7 +81,6 @@ internal abstract class Program
                 {
                     var newStudent = new Student("John", "Doe", 32, 5, 4, new Teacher("John", "S", 2, "Nat"));
                     manager.Add(newStudent);
-
                 }
                 else if (choice == "➖  Delete")
                 {
@@ -94,11 +90,7 @@ internal abstract class Program
                 {
                     Environment.Exit(0);
                 }
-                
             }
-
         }
     }
-
-
 }
