@@ -63,15 +63,12 @@ internal abstract class Program
                 }
                 else if (choice == "🔎 Find Student")
                 {
-
+                    while (true){
                     var searchLastQuery = AnsiConsole.Ask<string>("Find student by last name: ");
                     manager.SearchLastNameStudent(surname: searchLastQuery);
                     
-
-                    while (true)
-                    {
                         var lastNameSearch = AnsiConsole.Prompt(new SelectionPrompt<string>()
-                            .AddChoices("Return", "Exit"));
+                            .AddChoices("Search again", "Return", "Exit"));
 
                         if (lastNameSearch == "Return")
                         {
