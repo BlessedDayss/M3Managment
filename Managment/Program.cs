@@ -63,7 +63,25 @@ internal abstract class Program
 
                 }
                 else if (choice == "🔎 Find Student")
-                {
+                {   
+                    
+                    Console.WriteLine("Find student by last name: ");
+
+                    while (true)
+                    {
+                        var lastNameSearch = AnsiConsole.Prompt(new SelectionPrompt<string>()
+                            .AddChoices("Return", "Exit"));
+
+                        if (lastNameSearch == "Return")
+                        {
+                            break;
+                        }
+                        else if (lastNameSearch == "Exit")
+                        {
+                            Environment.Exit(0);
+                        }
+                    }
+
                 }
                 else if (choice == "➕  Add")
                 {

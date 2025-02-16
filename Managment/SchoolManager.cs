@@ -80,7 +80,6 @@ public class SchoolManager<T> : IManageable<T> where T : Person
     public void SearchStudent(string name)
     {
         var student = students.FirstOrDefault(s => s.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
-
         if (student != null)
         {
             var table = new Table()
