@@ -76,9 +76,6 @@ public class SchoolManager<T> : IManageable<T> where T : Person
 
         AnsiConsole.Write(table1);
     }
-    
-    
-
     public void SearchNameStudent(string name)
     {
         var student = students.FirstOrDefault(s => s.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
