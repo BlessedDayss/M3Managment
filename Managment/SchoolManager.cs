@@ -77,7 +77,7 @@ public class SchoolManager<T> : IManageable<T> where T : Person
         AnsiConsole.Write(table1);
     }
 
-    public void SearchStudent(string name)
+    public void SearchNameStudent(string name)
     {
         var student = students.FirstOrDefault(s => s.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
         if (student != null)
@@ -95,6 +95,29 @@ public class SchoolManager<T> : IManageable<T> where T : Person
         else
         {
             AnsiConsole.MarkupLine("[red]Student not found.[/]");
+        }
+    }
+
+    public void SearchLastNameStudent(string surname)
+    {
+        var student = students.FirstOrDefault(l => l.Surname.Equals(surname, StringComparison.OrdinalIgnoreCase));
+
+        if (student != null)
+        {
+            var table = new Table()
+                .AddColumn("Surname")
+                .AddColumn("Name")
+                .AddColumn("Age")
+                .AddColumn("Grade")
+                .AddColumn("GPA");
+
+            table.AddRow(student.Surname, student.Name, student.Age.ToString(), student._grade.ToString(),
+                student._gpa.ToString());
+            AnsiConsole.Write(table);
+        }
+        else
+        {
+            AnsiConsole.MarkupLine("[red]Student with this last name not found in the system.[/]");
         }
     }
 

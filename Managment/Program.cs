@@ -53,19 +53,20 @@ internal abstract class Program
                         }else if (choice2 == "Search")
                         {
                             var searchQuery = AnsiConsole.Ask<string>("Enter student name:");
-                            manager.SearchStudent(name: searchQuery);
+                            manager.SearchNameStudent(name: searchQuery);
                         }
                         else if (choice2 == "Exit")
                         {
                             Environment.Exit(0);
                         }
                     }
-
                 }
                 else if (choice == "🔎 Find Student")
-                {   
+                {
+
+                    var searchLastQuery = AnsiConsole.Ask<string>("Find student by last name: ");
+                    manager.SearchLastNameStudent(surname: searchLastQuery);
                     
-                    Console.WriteLine("Find student by last name: ");
 
                     while (true)
                     {
@@ -81,7 +82,6 @@ internal abstract class Program
                             Environment.Exit(0);
                         }
                     }
-
                 }
                 else if (choice == "➕  Add")
                 {
