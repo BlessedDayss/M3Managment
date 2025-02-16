@@ -1,0 +1,38 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        
+        
+        {
+            "args": [
+                "--extensionDevelopmentPath=${workspaceFolder}"
+            ],
+            "name": "Launch Extension",
+            "outFiles": [
+                "${workspaceFolder}/out/**/*.js"
+            ],
+            "preLaunchTask": "npm",
+            "request": "launch",
+            "type": "extensionHost"
+        },
+    {
+        "name": "C#: M3ManagmentApp",
+        "type": "dotnet",
+        "request": "launch",
+        "program": "${workspaceFolder}/<relative-path-to-project-folder>M3ManagmentApp/bin/Debug/net5.0/M3ManagmentApp.dll",
+        "args": [],
+        "cwd": "${workspaceFolder}/<relative-path-to-project-folder>M3ManagmentApp",
+        "stopAtEntry": false,
+        "console": "internalConsole"
+    },
+    {
+        "name": "C#: M3ManagmentApp Test",
+        "type": "dotnet",
+        "request": "launch",
+        "projectPath": "${workspaceFolder}/<relative-path-to-project-folder>M3ManagmentApp.Tests.csproj"
+    }
+    ]
+}

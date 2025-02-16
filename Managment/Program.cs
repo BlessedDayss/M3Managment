@@ -46,10 +46,21 @@ internal abstract class Program
                     {
                         var choice2 = AnsiConsole.Prompt(new SelectionPrompt<string>()
                             // .Title("Do you want to go back to the main menu?")
-                            .AddChoices("Return", "Exit"));
+                            .AddChoices("Return", "Search", "Exit"));
                         if (choice2 == "Return")
                         {
                             break;
+                        }else if (choice2 == "Search")
+                        {
+                            Console.WriteLine("Please type name of the Student: ");
+                            var studentName = Console.ReadLine();
+                            var studenSearch = manager.Find(studentName);
+
+                            if ( studenSearch != null)
+                            {
+                                manager.ShowStudentsTable(studenSearch);
+                            }
+                            
                         }
                         else if (choice2 == "Exit")
                         {
