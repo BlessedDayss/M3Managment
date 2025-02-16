@@ -35,9 +35,7 @@ public class SchoolManager<T> : IManageable<T> where T : Person
         students.Add(new Student("Benjamin", "Moore", 15, 9, 3, teachers[8]));
         students.Add(new Student("Sophia", "Taylor", 16, 10, 4, teachers[9]));
     }
-    
-    
-
+   
     public void ShowTeachersTable()
     
     {
@@ -118,8 +116,6 @@ public class SchoolManager<T> : IManageable<T> where T : Person
             AnsiConsole.MarkupLine("[red]Student with this last name not found in the system.[/]");
         }
     }
-
-
     public void Add(T item)
     {
         if (item is Student student)
