@@ -8,7 +8,7 @@ internal abstract class Program
     private static void Main()
     {
         
-        SchoolManager<Person> manager = new SchoolManager<Person>();
+        var manager = new SchoolManager<Person>();
 
         while (true)
         {   
