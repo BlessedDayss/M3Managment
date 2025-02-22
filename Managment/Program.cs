@@ -7,11 +7,11 @@ internal abstract class Program
 {
     private static void Main()
     {
-        
+
         var manager = new SchoolManager<Person>();
 
         while (true)
-        {   
+        {
             Console.Clear();
             var choice = AnsiConsole.Prompt(new SelectionPrompt<string>()
                 .Title("[blue]Welcome to M3 School Management App:[/]")
@@ -51,14 +51,19 @@ internal abstract class Program
                             if (choice2 == "Return")
                             {
                                 break;
-                            }else if (choice2 == "Search")
-                            {
-                                var searchQuery = AnsiConsole.Ask<string>("Enter student name:");
-                                manager.SearchNameStudent(name: searchQuery);
                             }
-                            else if (choice2 == "Exit")
+
+                            switch (choice2)
                             {
-                                Environment.Exit(0);
+                                case "Search":
+                                {
+                                    var searchQuery = AnsiConsole.Ask<string>("Enter student name:");
+                                    manager.SearchNameStudent(name: searchQuery);
+                                    break;
+                                }
+                                case "Exit":
+                                    Environment.Exit(0);
+                                    break;
                             }
                         }
 
@@ -66,7 +71,8 @@ internal abstract class Program
                     }
                     case "🔎 Find Student":
                     {
-                        while (true){
+                        while (true)
+                        {
                             var searchLastQuery = AnsiConsole.Ask<string>("Find student by last name: ");
                             manager.SearchLastNameStudent(surname: searchLastQuery);
                     
@@ -77,7 +83,7 @@ internal abstract class Program
                             {
                                 break;
                             }
-                            else if (lastNameSearch == "Exit")
+                            if (lastNameSearch == "Exit")
                             {
                                 Environment.Exit(0);
                             }
