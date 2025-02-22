@@ -116,6 +116,26 @@ public class SchoolManager<T> : Person
             AnsiConsole.MarkupLine("[red]Student with this last name not found in the system.[/]");
         }
     }
+    
+    public void SeachTeacher(string teacherName)
+    {
+        var teacher = teachers.FirstOrDefault(t => t.Name.Equals(teacherName, StringComparison.OrdinalIgnoreCase));
+        if (teacher != null)
+        {
+            var table = new Table()
+                .AddColumn("Name")
+                .AddColumn("Surname")
+                .AddColumn("Age")
+                .AddColumn("Subject");
+
+            table.AddRow(teacher.Name, teacher.Surname, teacher.Age.ToString(), teacher.Subject);
+            AnsiConsole.Write(table);
+        }
+        else
+        {
+            AnsiConsole.MarkupLine("[red]Teacher not found.[/]");
+        }
+    }
     public void Add(T item)
     {
         if (item is Student student)
@@ -125,36 +145,17 @@ public class SchoolManager<T> : Person
         }else if (item is Teacher teacher)
         {
             teachers.Add(teacher);
+            Console.WriteLine($"{GetInfo()} added");
         }
         else
         {
-            throw new ArgumentException($"Invalid type: {item.GetType()}");
+            Console.WriteLine("Inccoret please try again! ");
         }
         Console.WriteLine($"Added {item.GetType()}");
     }
-
-    // public void Remove(T item)
-    // {
-    //     throw new NotImplementedException();
-    // }
-
-    // public void AddStudent(T stunets)
-    // {
-    //     students.Add(student);
-    //     Console.WriteLine($"Added {student.GetType()}");
-    // }
-    //
-    // public void RemoveStudent(string studnet)
-    // {
-    //     throw new NotImplementedException();
-    // }
-    //
-    // public override string GetInfo()
-    // {
-    //     throw new NotImplementedException();
-    // }
     public override string GetInfo()
     {
         throw new NotImplementedException();
     }
+    
 }

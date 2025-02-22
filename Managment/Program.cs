@@ -92,6 +92,7 @@ internal abstract class Program
                         break;
                     }
                     case "➕  Add":
+                    {
                         while (true)
                         {
                             var addUser = AnsiConsole.Prompt(new SelectionPrompt<string>()
@@ -109,8 +110,10 @@ internal abstract class Program
                             {
                                 break;
                             }
+                            break;
                         }
                         break;
+                    }
                     case "➖  Delete":
                         break;
                     case "❌  Exit":
