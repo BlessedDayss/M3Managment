@@ -32,6 +32,7 @@ internal abstract class Program
                             {
                                 break;
                             }
+
                             if (choice2 == "Exit")
                             {
                                 Environment.Exit(0);
@@ -75,7 +76,7 @@ internal abstract class Program
                         {
                             var searchLastQuery = AnsiConsole.Ask<string>("Find student by last name: ");
                             manager.SearchLastNameStudent(surname: searchLastQuery);
-                    
+
                             var lastNameSearch = AnsiConsole.Prompt(new SelectionPrompt<string>()
                                 .AddChoices("Search again", "Return", "Exit"));
 
@@ -83,6 +84,7 @@ internal abstract class Program
                             {
                                 break;
                             }
+
                             if (lastNameSearch == "Exit")
                             {
                                 Environment.Exit(0);
@@ -121,7 +123,8 @@ internal abstract class Program
                                     .AddChoices(subjects));
                                 var teacher = new Teacher(teacherName, teacherSurname, teacherAge, teacherSubject);
                                 manager.Add(teacher);
-                            }else if (addUser == "Add Student")
+                            }
+                            else if (addUser == "Add Student")
                             {
                                 var studentName = AnsiConsole.Ask<string>("Enter student name: ");
                                 var studentSurname = AnsiConsole.Ask<string>("Enter studnet surname: ");
@@ -129,30 +132,76 @@ internal abstract class Program
                                 var studentGrade = AnsiConsole.Ask<int>("Enter studnet Grade: ");
                                 var studentGpa = AnsiConsole.Ask<int>("Enter student GPA: ");
 
-                                var teacherOptions = manager.teachers.Select(t => $"{t.Name} {t.Surname} ({t.Subject})");
+                                var teacherOptions =
+                                    manager.teachers.Select(t => $"{t.Name} {t.Surname} ({t.Subject})");
+
+                                // получаем строку выбранного учителя из списка
                                 var selectedTeacherString = AnsiConsole.Prompt(
                                     new SelectionPrompt<string>()
                                         .Title("Select a teacher for the student:")
                                         .AddChoices(teacherOptions)
-                                );;
-                                {
-                                    
-                                }
+                                );
+                                ;
+                                // так как SelectionPrompt возвращает строку, нам нуэно найти учителя по строке и передать его в конструктор студента
+                                // поэтому берем строку, выбранную пользователем selectedTeacherString , ищем в manager.teachers учителя и передаем в коснтруктор Student
+                                // так как учителя и студенты хранятся в разных списках, то их нельзя просто так связать, поэтому мы ищем учителя по строке и передаем его в конструктор студента
+
+                                /*
+                                Почему нельзя просто передать строку?
+
+                                Вы не можете напрямую передать selectedTeacherString в конструктор Student, потому что:
+
+                                Конструктор Student ожидает объект типа Teacher, а не строку.
+                                Строка "Emily Johnson (Mathematics)" — это просто текстовое представление, а Student требует полноценный объект Teacher с полями Name, Surname, Age, Subject.
+                                */
+
                                 var selectedTeacher = manager.teachers.First(t =>
                                     $"{t.Name} {t.Surname} ({t.Subject})" == selectedTeacherString);
+
                                 var student = new Student(studentName, studentSurname, studentAge, studentGrade,
                                     studentGpa, selectedTeacher);
                                 manager.Add(student);
                             }
+
                             if (addUser == "Return")
                             {
                                 break;
                             }
                         }
+
                         break;
                     }
                     case "➖  Delete":
-                        break;
+
+                    {
+                        while (true)
+                        {
+                            var removeUser = AnsiConsole.Prompt(new SelectionPrompt<string>()
+                                .AddChoices("Remove Teacher", "Remove Student", "Return", "Exit"));
+                            if (removeUser == "Remove Teacher")
+                            {
+                                var removeTeacher = AnsiConsole.Prompt(new SelectionPrompt<string>()
+                                    .Title("Select teacher to remove:")
+                                    .AddChoices(manager.teachers.Select(t =>
+                                        $"{t.Name} {t.Surname} ({t.Subject})")));
+
+                                var selectedTeacher = manager.teachers.First(t =>
+                                    $"{t.Name} {t.Surname} ({t.Subject})" == removeTeacher);
+                                manager.Remove(selectedTeacher);
+                            }
+
+                            if (removeUser == "Remove Studen")
+                            {
+
+                            }
+
+                            if (removeUser == "Return")
+                            {
+                                break;
+                            }
+                        }
+                    }break;
+
                     case "❌  Exit":
                         Environment.Exit(0);
                         break;

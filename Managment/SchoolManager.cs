@@ -153,6 +153,24 @@ public class SchoolManager<T> : Person
         }
         AnsiConsole.MarkupLine($"[red]Congratulation[/], [blue]New {item.GetType().Name} added[/]");
     }
+    
+    public void Remove(T item)
+    {
+        if (item is Student student)
+        {
+            students.Remove(student);
+            Console.WriteLine($"{student.Name} {student.Surname} removed");
+        }else if (item is Teacher teacher)
+        {
+            teachers.Remove(teacher);
+            Console.WriteLine($"{teacher.Name} {teacher.Surname} removed");
+        }
+        else
+        {
+            Console.WriteLine("Incorrect please try again! ");
+        }
+        AnsiConsole.MarkupLine($"[red]Congratulation[/], [blue]{item.GetType().Name} removed[/]");
+    }
     public override string GetInfo()
     {
         return "";
