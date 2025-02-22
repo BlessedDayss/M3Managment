@@ -102,7 +102,23 @@ internal abstract class Program
                                 var teacherName = AnsiConsole.Ask<string>("Enter teacher name:");
                                 var teacherSurname = AnsiConsole.Ask<string>("Enter teacher surname:");
                                 var teacherAge = AnsiConsole.Ask<int>("Enter teacher age:");
-                                var teacherSubject = AnsiConsole.Ask<string>("Enter teacher subject:");
+
+                                var subjects = new List<string>
+                                {
+                                    "Mathematics",
+                                    "Physics",
+                                    "Literature",
+                                    "History",
+                                    "Biology",
+                                    "Chemistry",
+                                    "Art",
+                                    "Geography",
+                                    "Music",
+                                    "Physical Education"
+                                };
+                                var teacherSubject = AnsiConsole.Prompt(new SelectionPrompt<string>()
+                                    .Title("Select subject: ")
+                                    .AddChoices(subjects));
                                 var teacher = new Teacher(teacherName, teacherSurname, teacherAge, teacherSubject);
                                 manager.Add(teacher);
                             }
