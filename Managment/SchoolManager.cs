@@ -141,21 +141,21 @@ public class SchoolManager<T> : Person
         if (item is Student student)
         {
             students.Add(student);
-            Console.WriteLine($"{GetInfo()} added");
+            Console.WriteLine($"{student.Name} {student.Surname} added");
         }else if (item is Teacher teacher)
         {
             teachers.Add(teacher);
-            Console.WriteLine($"{GetInfo()} added");
+            Console.WriteLine($"{teacher.Name} {teacher.Surname} added");
         }
         else
         {
-            Console.WriteLine("Inccoret please try again! ");
+            Console.WriteLine("Incorrect please try again! ");
         }
-        Console.WriteLine($"Added {item.GetType()}");
+        Console.WriteLine($"Congratulation, New {item.GetType().Name}");
     }
     public override string GetInfo()
     {
-        throw new NotImplementedException();
+        return "Okay";
     }
     
 }
