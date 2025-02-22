@@ -110,7 +110,6 @@ internal abstract class Program
                             {
                                 break;
                             }
-                            break;
                         }
                         break;
                     }
