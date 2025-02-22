@@ -19,76 +19,79 @@ internal abstract class Program
                     "❌  Exit"));
             {
                 Console.Clear();
-                if (choice == "📚 Show Teachers")
+                switch (choice)
                 {
-                    manager.ShowTeachersTable();
-                    while (true)
+                    case "📚 Show Teachers":
                     {
-                        var choice2 = AnsiConsole.Prompt(new SelectionPrompt<string>()
-                            .AddChoices("Return", "Exit"));
-                        if (choice2 == "Return")
+                        manager.ShowTeachersTable();
+                        while (true)
                         {
-                            break;
+                            var choice2 = AnsiConsole.Prompt(new SelectionPrompt<string>()
+                                .AddChoices("Return", "Exit"));
+                            if (choice2 == "Return")
+                            {
+                                break;
+                            }
+                            else if (choice2 == "Exit")
+                            {
+                                Environment.Exit(0);
+                            }
                         }
-                        else if (choice2 == "Exit")
-                        {
-                            Environment.Exit(0);
-                        }
+
+                        break;
                     }
-                }
-                else if (choice == "🎓 Show Students")
-                {
-                    manager.ShowStudentsTable(studentName: "");
-                    while (true)
+                    case "🎓 Show Students":
                     {
-                        var choice2 = AnsiConsole.Prompt(new SelectionPrompt<string>()
-                            // .Title("Do you want to go back to the main menu?")
-                            .AddChoices("Return", "Search", "Exit"));
-                        if (choice2 == "Return")
+                        manager.ShowStudentsTable(studentName: "");
+                        while (true)
                         {
-                            break;
-                        }else if (choice2 == "Search")
-                        {
-                            var searchQuery = AnsiConsole.Ask<string>("Enter student name:");
-                            manager.SearchNameStudent(name: searchQuery);
+                            var choice2 = AnsiConsole.Prompt(new SelectionPrompt<string>()
+                                // .Title("Do you want to go back to the main menu?")
+                                .AddChoices("Return", "Search", "Exit"));
+                            if (choice2 == "Return")
+                            {
+                                break;
+                            }else if (choice2 == "Search")
+                            {
+                                var searchQuery = AnsiConsole.Ask<string>("Enter student name:");
+                                manager.SearchNameStudent(name: searchQuery);
+                            }
+                            else if (choice2 == "Exit")
+                            {
+                                Environment.Exit(0);
+                            }
                         }
-                        else if (choice2 == "Exit")
-                        {
-                            Environment.Exit(0);
-                        }
+
+                        break;
                     }
-                }
-                else if (choice == "🔎 Find Student")
-                {
-                    while (true){
-                    var searchLastQuery = AnsiConsole.Ask<string>("Find student by last name: ");
-                    manager.SearchLastNameStudent(surname: searchLastQuery);
+                    case "🔎 Find Student":
+                    {
+                        while (true){
+                            var searchLastQuery = AnsiConsole.Ask<string>("Find student by last name: ");
+                            manager.SearchLastNameStudent(surname: searchLastQuery);
                     
-                        var lastNameSearch = AnsiConsole.Prompt(new SelectionPrompt<string>()
-                            .AddChoices("Search again", "Return", "Exit"));
+                            var lastNameSearch = AnsiConsole.Prompt(new SelectionPrompt<string>()
+                                .AddChoices("Search again", "Return", "Exit"));
 
-                        if (lastNameSearch == "Return")
-                        {
-                            break;
+                            if (lastNameSearch == "Return")
+                            {
+                                break;
+                            }
+                            else if (lastNameSearch == "Exit")
+                            {
+                                Environment.Exit(0);
+                            }
                         }
-                        else if (lastNameSearch == "Exit")
-                        {
-                            Environment.Exit(0);
-                        }
+
+                        break;
                     }
-                }
-                else if (choice == "➕  Add")
-                {
-                    var newStudent = new Student("John", "Doe", 32, 5, 4, new Teacher("John", "S", 2, "Nat"));
-                    manager.Add(newStudent);
-                }
-                else if (choice == "➖  Delete")
-                {
-
-                }
-                else if (choice == "❌  Exit")
-                {
-                    Environment.Exit(0);
+                    case "➕  Add":
+                        break;
+                    case "➖  Delete":
+                        break;
+                    case "❌  Exit":
+                        Environment.Exit(0);
+                        break;
                 }
             }
         }
