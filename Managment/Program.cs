@@ -86,7 +86,6 @@ internal abstract class Program
                         break;
                     }
                     case "➕  Add":
-                        break;
                     case "➖  Delete":
                         break;
                     case "❌  Exit":
