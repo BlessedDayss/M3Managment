@@ -121,6 +121,28 @@ internal abstract class Program
                                     .AddChoices(subjects));
                                 var teacher = new Teacher(teacherName, teacherSurname, teacherAge, teacherSubject);
                                 manager.Add(teacher);
+                            }else if (addUser == "Add Student")
+                            {
+                                var studentName = AnsiConsole.Ask<string>("Enter student name: ");
+                                var studentSurname = AnsiConsole.Ask<string>("Enter studnet surname: ");
+                                var studentAge = AnsiConsole.Ask<int>("Enter student age: ");
+                                var studentGrade = AnsiConsole.Ask<int>("Enter studnet Grade: ");
+                                var studentGpa = AnsiConsole.Ask<int>("Enter student GPA: ");
+
+                                var teacherOptions = manager.teachers.Select(t => $"{t.Name} {t.Surname} ({t.Subject})");
+                                var selectedTeacherString = AnsiConsole.Prompt(
+                                    new SelectionPrompt<string>()
+                                        .Title("Select a teacher for the student:")
+                                        .AddChoices(teacherOptions)
+                                );;
+                                {
+                                    
+                                }
+                                var selectedTeacher = manager.teachers.First(t =>
+                                    $"{t.Name} {t.Surname} ({t.Subject})" == selectedTeacherString);
+                                var student = new Student(studentName, studentSurname, studentAge, studentGrade,
+                                    studentGpa, selectedTeacher);
+                                manager.Add(student);
                             }
                             if (addUser == "Return")
                             {
