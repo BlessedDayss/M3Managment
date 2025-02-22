@@ -7,9 +7,7 @@ public class Teacher : Person
     {
         Subject = subject;
     }
-
     
-
     public override string GetInfo()
     {
         return $"{Name}, {Surname}, Age: {Age}, Subject: {Subject}";

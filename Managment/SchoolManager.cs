@@ -4,14 +4,14 @@ using Spectre.Console;
 
 namespace Managment;
 
-public class SchoolManager<T> : IManageable<T> where T : Person 
+public class SchoolManager<T> : Person 
 {
 
     public List<Teacher> teachers = new List<Teacher>();
     
     public List<Student> students = new List<Student>();
     
-    public SchoolManager()
+    public SchoolManager() : base("SchoolManager", "SchoolManager", 0)
     {
         teachers.Add(new Teacher("Emily", "Johnson", 34, "Mathematics"));
         teachers.Add(new Teacher("Michael", "Brown", 41, "Physics"));
@@ -121,6 +121,7 @@ public class SchoolManager<T> : IManageable<T> where T : Person
         if (item is Student student)
         {
             students.Add(student);
+            Console.WriteLine($"{GetInfo()} added");
         }else if (item is Teacher teacher)
         {
             teachers.Add(teacher);
@@ -132,12 +133,27 @@ public class SchoolManager<T> : IManageable<T> where T : Person
         Console.WriteLine($"Added {item.GetType()}");
     }
 
-    public void Remove(T item)
-    {
-        throw new NotImplementedException();
-    }
+    // public void Remove(T item)
+    // {
+    //     throw new NotImplementedException();
+    // }
 
-    public T? Find(string name)
+    // public void AddStudent(T stunets)
+    // {
+    //     students.Add(student);
+    //     Console.WriteLine($"Added {student.GetType()}");
+    // }
+    //
+    // public void RemoveStudent(string studnet)
+    // {
+    //     throw new NotImplementedException();
+    // }
+    //
+    // public override string GetInfo()
+    // {
+    //     throw new NotImplementedException();
+    // }
+    public override string GetInfo()
     {
         throw new NotImplementedException();
     }

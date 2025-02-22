@@ -13,10 +13,7 @@ public class Student : Person
         _teacher = teacher;
         // Teacher = teacher;
     }
-
     
-
-
     public override string GetInfo()
     {
         return $"{Name} {Surname}, Age: {Age}, Grade: {_grade}, GPA: {_gpa}, Teacher: {_teacher.GetInfoStudent()}";

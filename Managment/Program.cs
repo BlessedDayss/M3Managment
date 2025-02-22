@@ -32,7 +32,7 @@ internal abstract class Program
                             {
                                 break;
                             }
-                            else if (choice2 == "Exit")
+                            if (choice2 == "Exit")
                             {
                                 Environment.Exit(0);
                             }
@@ -92,6 +92,25 @@ internal abstract class Program
                         break;
                     }
                     case "➕  Add":
+                        while (true)
+                        {
+                            var addUser = AnsiConsole.Prompt(new SelectionPrompt<string>()
+                                .AddChoices("Add Teacher", "Add Student", "Return", "Exit"));
+                            if (addUser == "Add Teacher")
+                            {
+                                var teacherName = AnsiConsole.Ask<string>("Enter teacher name:");
+                                var teacherSurname = AnsiConsole.Ask<string>("Enter teacher surname:");
+                                var teacherAge = AnsiConsole.Ask<int>("Enter teacher age:");
+                                var teacherSubject = AnsiConsole.Ask<string>("Enter teacher subject:");
+                                var teacher = new Teacher(teacherName, teacherSurname, teacherAge, teacherSubject);
+                                manager.Add(teacher);
+                            }
+                            if (addUser == "Return")
+                            {
+                                break;
+                            }
+                        }
+                        break;
                     case "➖  Delete":
                         break;
                     case "❌  Exit":
