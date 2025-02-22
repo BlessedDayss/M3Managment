@@ -177,7 +177,7 @@ internal abstract class Program
                         while (true)
                         {
                             var removeUser = AnsiConsole.Prompt(new SelectionPrompt<string>()
-                                .AddChoices("Remove Teacher", "Remove Student", "Return", "Exit"));
+                                .AddChoices("Remove Teacher", "Remove Student", "Return"));
                             if (removeUser == "Remove Teacher")
                             {
                                 var removeTeacher = AnsiConsole.Prompt(new SelectionPrompt<string>()
@@ -190,18 +190,22 @@ internal abstract class Program
                                 manager.Remove(selectedTeacher);
                             }
 
-                            if (removeUser == "Remove Studen")
+                            if (removeUser == "Remove Student")
                             {
+                                var removeStudent = AnsiConsole.Prompt(new SelectionPrompt<string>()
+                                    .Title("Select student to remove: ")
+                                    .AddChoices(manager.students.Select(s => $"{s.Name} {s.Surname}")));
 
+                                var selectedStudent =
+                                    manager.students.First(s => $"{s.Name} {s.Surname}" == removeStudent);
+                                manager.Remove(selectedStudent);
                             }
-
                             if (removeUser == "Return")
                             {
                                 break;
                             }
                         }
                     }break;
-
                     case "❌  Exit":
                         Environment.Exit(0);
                         break;
