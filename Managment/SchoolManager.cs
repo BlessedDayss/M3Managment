@@ -151,11 +151,11 @@ public class SchoolManager<T> : Person
         {
             Console.WriteLine("Incorrect please try again! ");
         }
-        Console.WriteLine($"Congratulation, New {item.GetType().Name}");
+        AnsiConsole.MarkupLine($"[red]Congratulation[/], [blue]New {item.GetType().Name} added[/]");
     }
     public override string GetInfo()
     {
-        return "Okay";
+        return "";
     }
     
 }
