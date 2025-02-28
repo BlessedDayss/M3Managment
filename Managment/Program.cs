@@ -134,8 +134,7 @@ internal abstract class Program
 
                                 var teacherOptions =
                                     manager.teachers.Select(t => $"{t.Name} {t.Surname} ({t.Subject})");
-
-                                // получаем строку выбранного учителя из списка
+                                
                                 var selectedTeacherString = AnsiConsole.Prompt(
                                     new SelectionPrompt<string>()
                                         .Title("Select a teacher for the student:")
