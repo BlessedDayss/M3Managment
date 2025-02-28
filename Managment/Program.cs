@@ -132,21 +132,30 @@ internal abstract class Program
                                 var studentGrade = AnsiConsole.Ask<int>("Enter studnet Grade: ");
                                 var studentGpa = AnsiConsole.Ask<int>("Enter student GPA: ");
 
-                                var teacherOptions =
-                                    manager.teachers.Select(t => $"{t.Name} {t.Surname} ({t.Subject})");
-                                
-                                var selectedTeacherString = AnsiConsole.Prompt(
-                                    new SelectionPrompt<string>()
-                                        .Title("Select a teacher for the student:")
-                                        .AddChoices(teacherOptions)
-                                );
+                                if (!manager.teachers.Any())
+                                {
+                                    AnsiConsole.MarkupLine(
+                                        "[red]Unfortunately, there are no teachers in the system.[/]");
+                                    AnsiConsole.MarkupLine("[green]Please add a teacher first.[/]");
+                                }
+                                else
+                                {
+                                    var teacherOptions =
+                                        manager.teachers.Select(t => $"{t.Name} {t.Surname} ({t.Subject})");
 
-                                var selectedTeacher = manager.teachers.First(t =>
-                                    $"{t.Name} {t.Surname} ({t.Subject})" == selectedTeacherString);
+                                    var selectedTeacherString = AnsiConsole.Prompt(
+                                        new SelectionPrompt<string>()
+                                            .Title("Select a teacher for the student:")
+                                            .AddChoices(teacherOptions)
+                                    );
 
-                                var student = new Student(studentName, studentSurname, studentAge, studentGrade,
-                                    studentGpa, selectedTeacher);
-                                manager.Add(student);
+                                    var selectedTeacher = manager.teachers.First(t =>
+                                        $"{t.Name} {t.Surname} ({t.Subject})" == selectedTeacherString);
+
+                                    var student = new Student(studentName, studentSurname, studentAge, studentGrade,
+                                        studentGpa, selectedTeacher);
+                                    manager.Add(student);
+                                }
                             }
 
                             if (addUser == "Return")
