@@ -141,19 +141,6 @@ internal abstract class Program
                                         .Title("Select a teacher for the student:")
                                         .AddChoices(teacherOptions)
                                 );
-                                ;
-                                // так как SelectionPrompt возвращает строку, нам нуэно найти учителя по строке и передать его в конструктор студента
-                                // поэтому берем строку, выбранную пользователем selectedTeacherString , ищем в manager.teachers учителя и передаем в коснтруктор Student
-                                // так как учителя и студенты хранятся в разных списках, то их нельзя просто так связать, поэтому мы ищем учителя по строке и передаем его в конструктор студента
-
-                                /*
-                                Почему нельзя просто передать строку?
-
-                                Вы не можете напрямую передать selectedTeacherString в конструктор Student, потому что:
-
-                                Конструктор Student ожидает объект типа Teacher, а не строку.
-                                Строка "Emily Johnson (Mathematics)" — это просто текстовое представление, а Student требует полноценный объект Teacher с полями Name, Surname, Age, Subject.
-                                */
 
                                 var selectedTeacher = manager.teachers.First(t =>
                                     $"{t.Name} {t.Surname} ({t.Subject})" == selectedTeacherString);
@@ -180,26 +167,52 @@ internal abstract class Program
                                 .AddChoices("Remove Teacher", "Remove Student", "Return"));
                             if (removeUser == "Remove Teacher")
                             {
-                                var removeTeacher = AnsiConsole.Prompt(new SelectionPrompt<string>()
-                                    .Title("Select teacher to remove:")
-                                    .AddChoices(manager.teachers.Select(t =>
-                                        $"{t.Name} {t.Surname} ({t.Subject})")));
+                                var teacherChoice = manager.teachers
+                                    .Select(t =>
+                                        $"{t.Name} {t.Surname} {t.Subject}")
+                                    .ToList();
 
-                                var selectedTeacher = manager.teachers.First(t =>
-                                    $"{t.Name} {t.Surname} ({t.Subject})" == removeTeacher);
-                                manager.Remove(selectedTeacher);
+                                if (!teacherChoice.Any())
+                                {
+                                    AnsiConsole.MarkupLine("[red]List empty. Please add a teacher[/]");
+                                }
+                                else
+                                {
+
+                                    var removeTeacher = AnsiConsole.Prompt(new SelectionPrompt<string>()
+                                        .Title("Select teacher to remove:")
+                                        .AddChoices(manager.teachers.Select(t =>
+                                            $"{t.Name} {t.Surname} ({t.Subject})")));
+
+                                    var selectedTeacher = manager.teachers.First(t =>
+                                        $"{t.Name} {t.Surname} ({t.Subject})" == removeTeacher);
+                                    manager.Remove(selectedTeacher);
+                                }
                             }
 
                             if (removeUser == "Remove Student")
                             {
-                                var removeStudent = AnsiConsole.Prompt(new SelectionPrompt<string>()
-                                    .Title("Select student to remove: ")
-                                    .AddChoices(manager.students.Select(s => $"{s.Name} {s.Surname}")));
 
-                                var selectedStudent =
-                                    manager.students.First(s => $"{s.Name} {s.Surname}" == removeStudent);
-                                manager.Remove(selectedStudent);
+                                var studentChoice = manager.students
+                                    .Select(s => $"{s.Name} {s.Surname}")
+                                    .ToList();
+
+                                if (!studentChoice.Any())
+                                {
+                                    AnsiConsole.MarkupLine("[red]List empty. Please add a student.[/]");
+                                }
+                                else
+                                {
+                                    var removeStudent = AnsiConsole.Prompt(new SelectionPrompt<string>()
+                                        .Title("Select student to remove: ")
+                                        .AddChoices(manager.students.Select(s => $"{s.Name} {s.Surname}")));
+
+                                    var selectedStudent =
+                                        manager.students.First(s => $"{s.Name} {s.Surname}" == removeStudent);
+                                    manager.Remove(selectedStudent);
+                                }
                             }
+                            
                             if (removeUser == "Return")
                             {
                                 break;
